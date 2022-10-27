@@ -25,7 +25,7 @@ class User{
         $mysqli = $this->db->connect();
 
         $username          = $mysqli->real_escape_string($username);
-        $email         = $mysqli->real_escape_string($nama);
+        $email         = $mysqli->real_escape_string($email);
         $level = $mysqli->real_escape_string($level);
         $department       = $mysqli->real_escape_string($department);
 
@@ -37,11 +37,11 @@ class User{
         // cek hasil query
         if($result){
             /* jika data berhasil disimpan alihkan ke halaman siswa dan tampilkan pesan = 2 */
-            header("Location: ViewUser.php?alert=Success");
+            header("Location: ViewUser.php?alert=2");
         }
         else{
             /* jika data gagal disimpan alihkan ke halaman siswa dan tampilkan pesan = 1 */
-            header("Location: index.php?alert=Failed");
+            header("Location: index.php?alert=1");
         }
         // menutup koneksi database
         $mysqli->close();
@@ -51,7 +51,7 @@ class User{
         $mysqli = $this->db->connect();
 
         // sql statement untuk mengambil data siswa berdasarkan nis
-        $sql = "SELECT * FROM user WHERE nis='$id'";
+        $sql = "SELECT * FROM user WHERE id_user='$id'";
 
         $result = $mysqli->query($sql);
         $data   = $result->fetch_assoc();
@@ -67,7 +67,7 @@ class User{
         $mysqli = $this->db->connect();
 
         $username          = $mysqli->real_escape_string($username);
-        $email         = $mysqli->real_escape_string($nama);
+        $email         = $mysqli->real_escape_string($email);
         $level = $mysqli->real_escape_string($level);
         $department       = $mysqli->real_escape_string($department);
 
@@ -76,18 +76,18 @@ class User{
                                     email           = '$email',
                                     level           = '$level',
                                     department      = '$department'
-                              WHERE id              = '$id'"; 
+                              WHERE id_user              = '$id'"; 
 
         $result = $mysqli->query($sql);
 
         // cek hasil query
         if($result){
             /* jika data berhasil disimpan alihkan ke halaman siswa dan tampilkan pesan = 2 */
-            header("Location: ViewUser.php?alert=Success");
+            header("Location: ViewUser.php?alert=2");
         }
         else{
             /* jika data gagal disimpan alihkan ke halaman siswa dan tampilkan pesan = 1 */
-            header("Location: index.php?alert=Failed");
+            header("Location: index.php?alert=1");
         }
 
         // menutup koneksi database
@@ -100,18 +100,18 @@ class User{
 
 
         // sql statement untuk delete data siswa
-        $sql = "DELETE FROM user WHERE nis = '$id'";
+        $sql = "DELETE FROM user WHERE id_user = '$id'";
 
         $result = $mysqli->query($sql);
 
         // cek hasil query
         if($result){
             /* jika data berhasil disimpan alihkan ke halaman siswa dan tampilkan pesan = 2 */
-            header("Location: ViewUser.php?alert=Success");
+            header("Location: ViewUser.php?alert=2");
         }
         else{
             /* jika data gagal disimpan alihkan ke halaman siswa dan tampilkan pesan = 1 */
-            header("Location: index.php?alert=Failed");
+            header("Location: ViewUser.php?alert=1");
         }
 
         // menutup koneksi database
